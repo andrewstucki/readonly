@@ -1,0 +1,19 @@
+version: "3.2" # Use version 3.2 or above
+services:
+  readonly:
+    cap_drop: ['ALL']
+    image: readonly
+    volumes:
+      - type: volume
+        source: system
+        target: /tmp
+  readonly-setcap:
+    cap_drop: ['ALL']
+    image: readonly
+    entrypoint: /usr/local/bin/readonly-setcap
+    volumes:
+      - type: volume
+        source: system
+        target: /tmp
+volumes:
+  system:
